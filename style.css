@@ -1,0 +1,189 @@
+ /* ---------------------------------------------------- */
+        /* --- DARK MODE ROOT VARIABLES (THEME) --- */
+        /* ---------------------------------------------------- */
+        :root {
+            --primary-color: #00bcd4; /* Bright Cyan/Teal Accent */
+            --primary-dark: #00838f;
+            --background-color: #1a233b; /* Deep Dark Blue */
+            --container-color: #212c47; /* Slightly lighter dark background */
+            --text-color: #e0e0e0; /* Light text for dark background */
+            --shadow-light: rgba(255, 255, 255, 0.05);
+            --shadow-dark: rgba(0, 0, 0, 0.5);
+            --footer-height: 60px;
+        }
+
+        /* --- General Body and Container Styles --- */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background-color);
+            margin: 0;
+            padding: 40px 20px var(--footer-height) 20px; 
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            color: var(--text-color);
+        }
+
+        .dashboard-container {
+            width: 95%;
+            /* Reset max-width for the 3-column grid */
+            max-width: 900px; 
+            padding: 30px;
+            border-radius: 20px;
+            background: var(--container-color);
+            box-shadow: 10px 10px 30px var(--shadow-dark),
+                        -10px -10px 30px var(--shadow-light);
+            text-align: center;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            font-size: 2.2em;
+            letter-spacing: 1px;
+        }
+
+        /* ------------------------------------- */
+        /* --- RESPONSIVE BUTTON GRID (FIXED) --- */
+        /* ------------------------------------- */
+        
+        .button-grid {
+            display: grid;
+            gap: 25px; /* Restored original gap */
+            margin: 30px 0;
+            /* DEFAULT (SM/MD screens): 1 button per row */
+            grid-template-columns: 1fr; 
+        }
+        
+        /* Large Screens (LG, 992px+) - 3 buttons per row (3-3-3-1 layout for 10 items) */
+        @media (min-width: 992px) {
+            .button-grid {
+                /* CORRECTED: Set to 3 columns per row */
+                grid-template-columns: repeat(3, 1fr); 
+            }
+        }
+
+        /* ------------------------------------- */
+        /* --- ANCHOR BUTTON STYLES --- */
+        /* ------------------------------------- */
+
+        .feature-link {
+            text-decoration: none; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            padding: 30px 20px; 
+            font-size: 1.1em;
+            font-weight: 600;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            background: var(--container-color);
+            color: var(--text-color);
+            box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.4),
+                        -8px -8px 16px rgba(255, 255, 255, 0.05);
+            transition: all 0.2s ease-in-out;
+            text-align: center;
+            line-height: 1.4;
+        }
+
+        .feature-link:hover {
+            background: var(--primary-dark);
+            color: white;
+            box-shadow: 0 0 15px var(--primary-color);
+        }
+
+        .feature-link:active {
+            box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.6),
+                        inset -4px -4px 8px rgba(255, 255, 255, 0.05);
+            background: var(--container-color);
+            color: var(--primary-color);
+        }
+
+        /* ------------------------------------- */
+        /* --- FIXED FOOTER STYLES (CENTERED) --- */
+        /* ------------------------------------- */
+
+        .fixed-footer {
+            position: fixed; 
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: var(--footer-height);
+            background-color: var(--primary-dark);
+            color: white;
+            padding: 0 20px;
+            box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.5);
+            z-index: 1000; 
+            display: flex;
+            align-items: center;
+            justify-content: center; 
+        }
+
+        .footer-content {
+            width: 100%;
+            max-width: 1000px;
+            font-size: 0.9em;
+            text-align: center; 
+            display: block; 
+        }
+        
+        .contact-trigger {
+            color: var(--primary-color);
+            cursor: pointer;
+            font-weight: bold;
+            text-decoration: underline;
+            transition: color 0.2s;
+        }
+        .contact-trigger:hover {
+            color: white;
+            text-decoration: none;
+        }
+
+        /* ------------------------------------- */
+        /* --- MODAL CUSTOM STYLE --- */
+        /* ------------------------------------- */
+        
+        .modal-content {
+            background-color: var(--container-color);
+            border: 1px solid var(--primary-dark);
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            color: var(--text-color);
+        }
+        
+        .modal-header {
+            border-bottom: 2px solid var(--primary-color);
+            color: var(--text-color);
+        }
+        
+        .modal-title {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        
+        .modal-body {
+            color: var(--text-color);
+            text-align: left;
+        }
+        
+        .modal-body a {
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+        .modal-body a:hover {
+            text-decoration: underline;
+            color: #fff;
+        }
+        
+        .btn-close {
+            filter: invert(1);
+        }
+        
+        .modal-body i {
+            margin-right: 10px;
+            width: 20px;
+        }

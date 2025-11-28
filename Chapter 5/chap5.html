@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Adder Program</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 50px;
+        }
+        h1 {
+            color: #34495e ;
+        }
+        #result-display {
+            font-size: 2em;
+            color: #27ae60;
+            margin-top: 20px;
+            padding: 10px;
+            border: 2px solid #27ae60;
+            display: inline-block;
+            border-radius: 5px;
+        }
+      
+        h2 {
+            color: #16a085;
+            border-bottom: 1px dashed #ccc;
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+        .result-box {
+            background-color: #ecf0f1;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+        .bold-val {
+            font-weight: bold;
+            color: #e74c3c;
+        }
+        #output-box {
+            margin: 30px auto;
+            padding: 20px;
+            border: 2px solid #3498db;
+            border-radius: 8px;
+            width: fit-content;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .highlight {
+            font-size: 1.5em;
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        
+        #table-container {
+            margin: 20px auto;
+            padding: 20px;
+            width: fit-content;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .table-heading {
+            font-size: 1.5em;
+            color: #16a085;
+            margin-bottom: 15px;
+        }
+        .table-row {
+            font-size: 1.1em;
+            padding: 5px 0;
+            text-align: left;
+            border-bottom: 1px dotted #ccc;
+        }
+        .result-highlight {
+            font-weight: bold;
+            color: #e74c3c;
+            float: right;
+            min-width: 50px;
+            text-align: right;
+        }
+
+        .converter-result {
+            margin: 20px auto;
+            padding: 15px;
+            width: fit-content;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            font-size: 1.2em;
+        }
+        #celsius-to-fahrenheit {
+            background-color: #e6f7ff;
+            border: 1px solid #3498db;
+            color: #2980b9;
+        }
+        #fahrenheit-to-celsius {
+            background-color: #fff0e6;
+            border: 1px solid #e67e22;
+            color: #d35400;
+        }
+        .temp-val {
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        #receipt {
+            margin: 30px auto;
+            padding: 20px;
+            width: 350px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+        #receipt h2 {
+            text-align: center;
+            color: #16a085;
+            border-bottom: 2px solid #16a085;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        .item-row, .summary-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+            border-bottom: 1px dashed #eee;
+        }
+        .total-row {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #e74c3c;
+            border-top: 2px solid #2c3e50;
+            margin-top: 15px;
+            padding-top: 10px;
+        }
+        .label {
+            font-weight: 500;
+        }
+        #result-box {
+            margin: 30px auto;
+            padding: 25px;
+            width: 300px;
+            background-color: #fff;
+            border: 2px solid #3498db;
+            border-radius: 10px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+        .data-point {
+            font-size: 1.1em;
+            margin: 5px 0;
+        }
+        .percentage {
+            font-size: 2.2em;
+            color: #27ae60;
+            font-weight: bold;
+            margin-top: 15px;
+            border-top: 1px dashed #ccc;
+            padding-top: 10px;
+        }
+        p {
+            font-size: 1.1em;
+            margin: 10px 0;
+        }
+        .result {
+            font-weight: bold;
+            color: #0056b3;
+            font-size: 1.2em;
+        }
+        .circle-calculator-box {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-width: 60%;
+            margin: auto;
+            display: block;
+        }
+     
+        /* Class name replaced: 'result' -> 'property-output' */
+        .property-output {
+            font-weight: bold;
+            color: #28a745;
+            font-size: 1.3em;
+            padding: 5px 0;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+            max-width: 80%;
+            margin: auto;
+            display: block;
+        }
+       
+        p {
+            font-size: 1.1em;
+            margin: 10px 0;
+        }
+        .data-point {
+            font-style: italic;
+            color: #555;
+        }
+        .final-result {
+            font-weight: bold;
+            color: #008000; /* Green for "supply" */
+            font-size: 1.4em;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e6ffe6;
+            border-radius: 8px;
+        }
+        .currency-box {
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+  
+    .converted-amount {
+      margin-top: 20px;
+      font-size: 1.5em;
+      color: #007BFF;
+    }
+    </style>
+</head>
+<body>
+
+    <h1 style="background-color: #9ccded;color: #7d5017;">MATH EXPRESSIONS</h1>
+
+    <h1>Two Number Addition Program</h1>
+    <p>Watch the result below after the JavaScript executes.</p>
+
+    <div id="result-display">Loading...</div>
+
+
+    <br><br><br><br><br>
+    <hr size="5" color="gray">
+
+
+
+    <h1>JavaScript Arithmetic Operations & Expressions</h1>
+
+    <div id="results"></div>
+
+
+    
+    <br><br><br><br><br>
+    <hr size="5" color="gray">
+
+
+
+<h1>Movie Ticket Cost Calculator</h1>
+    <p>Calculating the total cost for 5 tickets...</p>
+
+    <div id="output-box">
+        </div>
+
+
+
+  <br><br><br><br><br>
+    <hr size="5" color="gray">
+
+
+
+        <div id="table-container">
+        <div class="table-heading">Generating Table...</div>
+    </div>
+
+    
+  <br><br><br><br><br>
+    <hr size="5" color="gray">
+
+
+    <h1>The Temperature Converter</h1>
+
+    <div id="celsius-to-fahrenheit" class="converter-result">
+        </div>
+
+    <div id="fahrenheit-to-celsius" class="converter-result">
+        </div>
+
+         <br><br><br><br><br>
+    <hr size="5" color="gray">
+
+
+
+
+<h1>E-commerce Shopping Cart Checkout</h1>
+
+    <div id="receipt">
+        <h2>Order Receipt</h2>
+        </div>
+
+
+         <br><br><br>
+    <hr size="5" color="gray">
+
+
+<h1>Student Percentage Calculator</h1>
+
+    <div id="result-box">
+        <p class="data-point">Calculating...</p>
+
+        
+    </div>
+
+
+
+        <br><br><br>
+    <hr size="5" color="gray">
+
+
+
+ <div class="currency-box">
+    <h1>Currency Converter</h1>
+    <div class="converted-amount" id="output"></div>
+  </div>
+
+
+
+
+         <br><br><br>
+    <hr size="5" color="gray">
+
+
+    <h1>Programming Tasks in JavaScript</h1>
+
+    <div class="container" id="arithmetic-result">
+        <h2>1. Arithmetic Operations in a Single Expression</h2>
+        <p>The sequence of operations is: **Add 5**, then **Multiply by 10**, then **Divide by 2**.</p>
+        <p>Initial Number: <span id="initial-num"></span></p>
+        <p class="result">Final Result: <span id="final-res"></span></p>
+    </div>
+<br>
+    <div class="container" id="age-result">
+        <h2>2. The Age Calculator</h2>
+        <p>Based on the current year and the birth year, two possible ages are calculated.</p>
+        <p>Current Year: <span id="current-year"></span></p>
+        <p>Birth Year: <span id="birth-year"></span></p>
+        <p class="result"><span id="age-output"></span></p>
+    </div>
+
+
+        <br><br><br>
+    <hr size="5" color="gray">
+
+    <div class="circle-calculator-box">
+        <h1>The Geometrizer 📏</h1>
+        
+        <p>Radius (r): <span id="radius-output"></span></p>
+        
+        <hr>
+        
+        <p class="property-output">Circumference (2 &pi; r): <span id="circumference-output"></span></p>
+        
+        <p class="property-output">Area (&pi; r&sup2;): <span id="area-output"></span></p>
+    </div>
+
+    
+        <br><br><br>
+    <hr size="5" color="gray">
+
+<div class="container">
+        <h1>🍿 The Lifetime Snack Supply Calculator</h1>
+        
+        <p>Favorite Snack: <span id="snack-name" class="data-point"></span></p>
+        <p>Current Age: <span id="current-age" class="data-point"></span> years</p>
+        <p>Maximum Projected Age: <span id="max-age" class="data-point"></span> years</p>
+        <p>Daily Consumption: <span id="amount-per-day" class="data-point"></span> units</p>
+
+        <hr>
+
+        <p class="final-result" id="result-output"></p>
+    </div>
+
+
+
+
+    
+
+
+    <script src="./chap5.js"></script>
+
+
+
+   
+
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conditional Logic Exercises</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom font and basic setup */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f7f7;
+        }
+        .task-card {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s;
+        }
+        .task-card:hover {
+            transform: translateY(-2px);
+        }
+        .result-box {
+            min-height: 2.5rem;
+            padding: 0.5rem;
+            border-radius: 0.375rem;
+            margin-top: 0.5rem;
+            font-size: 0.95rem; /* Slightly smaller for clarity */
+        }
+        .grade-table-output td, .grade-table-output th {
+            padding: 0.4rem 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .grade-table-output th {
+            background-color: #f3f4f6;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body class="p-4 sm:p-8">
+
+    <div class="max-w-6xl mx-auto">
+        <h1 class="text-4xl font-extrabold text-center mb-10 text-indigo-700">JavaScript Conditional Statements Practice</h1>
+
+        <div id="tasks-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <!-- Existing TASK 1: City Check -->
+            <div id="task1" class="task-card bg-white p-6 rounded-xl border border-gray-200">
+                <h2 class="text-xl font-semibold mb-3 text-indigo-600">1. Welcome City Check</h2>
+                <input type="text" id="cityInput" placeholder="Enter City Name (e.g., Karachi)" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 mb-3">
+                <button onclick="checkCity()" class="w-full bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-lg transition duration-150">Check City</button>
+                <div id="cityResult" class="result-box bg-blue-100 text-blue-800 font-medium"></div>
+            </div>
+
+            <!-- Existing TASK 2: Gender Greeting -->
+            <div id="task2" class="task-card bg-white p-6 rounded-xl border border-gray-200">
+                <h2 class="text-xl font-semibold mb-3 text-indigo-600">2. Gender Greeting</h2>
+                <select id="genderSelect" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 mb-3">
+                    <option value="">Select Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+                <button onclick="greetUser()" class="w-full bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-lg transition duration-150">Greet</button>
+                <div id="genderResult" class="result-box bg-blue-100 text-blue-800 font-medium"></div>
+            </div>
+
+            <!-- Existing TASK 3: Traffic Signal -->
+            <div id="task3" class="task-card bg-white p-6 rounded-xl border border-gray-200">
+                <h2 class="text-xl font-semibold mb-3 text-indigo-600">3. Traffic Signal Message</h2>
+                <select id="signalSelect" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 mb-3">
+                    <option value="">Select Signal Color</option>
+                    <option value="red">Red</option>
+                    <option value="yellow">Yellow</option>
+                    <option value="green">Green</option>
+                </select>
+                <button onclick="checkSignal()" class="w-full bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-lg transition duration-150">Get Instruction</button>
+                <div id="signalResult" class="result-box bg-blue-100 text-blue-800 font-medium"></div>
+            </div>
+
+            <!-- Existing TASK 4: Fuel Check -->
+            <div id="task4" class="task-card bg-white p-6 rounded-xl border border-gray-200">
+                <h2 class="text-xl font-semibold mb-3 text-indigo-600">4. Fuel Level Check</h2>
+                <input type="number" step="0.01" id="fuelInput" placeholder="Fuel in Litres (e.g., 0.15)" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 mb-3">
+                <button onclick="checkFuel()" class="w-full bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-lg transition duration-150">Check Fuel</button>
+                <div id="fuelResult" class="result-box bg-blue-100 text-blue-800 font-medium"></div>
+            </div>
+            
+            <!-- NEW TASK 6: Grade Calculator -->
+            <div id="task6" class="task-card bg-white p-6 rounded-xl border border-gray-200 lg:col-span-2">
+                <h2 class="text-xl font-semibold mb-3 text-pink-600">6. Grade Calculator</h2>
+                <div class="grid grid-cols-2 gap-3 mb-3">
+                    <input type="number" id="sub1Marks" placeholder="Sub 1 Marks" class="p-2 border border-gray-300 rounded-lg focus:ring-pink-500 focus:border-pink-500" min="0">
+                    <input type="number" id="sub2Marks" placeholder="Sub 2 Marks" class="p-2 border border-gray-300 rounded-lg focus:ring-pink-500 focus:border-pink-500" min="0">
+                    <input type="number" id="sub3Marks" placeholder="Sub 3 Marks" class="p-2 border border-gray-300 rounded-lg focus:ring-pink-500 focus:border-pink-500" min="0">
+                    <input type="number" id="totalMarks" placeholder="Total Max Marks" class="p-2 border border-gray-300 rounded-lg focus:ring-pink-500 focus:border-pink-500" min="1">
+                </div>
+                <button onclick="calculateGrade()" class="w-full bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-lg transition duration-150">Calculate Grade</button>
+                <div id="gradeResult" class="result-box bg-pink-100 text-pink-800 font-medium p-2 mt-3"></div>
+            </div>
+
+            <!-- NEW TASK 7: Guess Game -->
+            <div id="task7" class="task-card bg-white p-6 rounded-xl border border-gray-200">
+                <h2 class="text-xl font-semibold mb-3 text-purple-600">7. Guess Game (1-10)</h2>
+                <input type="number" id="guessInput" placeholder="Guess a number (1-10)" min="1" max="10" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-purple-500 focus:border-purple-500 mb-3">
+                <button onclick="guessNumber()" class="w-full bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded-lg transition duration-150">Submit Guess</button>
+                <div id="guessResult" class="result-box bg-purple-100 text-purple-800 font-medium"></div>
+            </div>
+
+            <!-- NEW TASK 8: Divisible by 3 Check -->
+            <div id="task8" class="task-card bg-white p-6 rounded-xl border border-gray-200">
+                <h2 class="text-xl font-semibold mb-3 text-teal-600">8. Divisible by 3 Check</h2>
+                <input type="number" id="divisibleInput" placeholder="Enter a whole number" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-teal-500 focus:border-teal-500 mb-3">
+                <button onclick="checkDivisibleBy3()" class="w-full bg-teal-500 hover:bg-teal-600 text-white font-bold py-2 px-4 rounded-lg transition duration-150">Check</button>
+                <div id="divisibleResult" class="result-box bg-teal-100 text-teal-800 font-medium"></div>
+            </div>
+            
+            <!-- NEW TASK 9: Even/Odd Check -->
+            <div id="task9" class="task-card bg-white p-6 rounded-xl border border-gray-200">
+                <h2 class="text-xl font-semibold mb-3 text-red-600">9. Even or Odd Check</h2>
+                <input type="number" id="parityInput" placeholder="Enter a whole number" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-red-500 focus:border-red-500 mb-3">
+                <button onclick="checkEvenOdd()" class="w-full bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg transition duration-150">Check Parity</button>
+                <div id="parityResult" class="result-box bg-red-100 text-red-800 font-medium"></div>
+            </div>
+            
+            <!-- NEW TASK 10: Temperature Checker -->
+            <div id="task10" class="task-card bg-white p-6 rounded-xl border border-gray-200">
+                <h2 class="text-xl font-semibold mb-3 text-orange-600">10. Temperature Checker</h2>
+                <input type="number" id="tempInput" placeholder="Enter Temperature (°C)" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500 mb-3">
+                <button onclick="checkTemperature()" class="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-lg transition duration-150">Check Weather</button>
+                <div id="tempResult" class="result-box bg-orange-100 text-orange-800 font-medium"></div>
+            </div>
+            
+            <!-- NEW TASK 11: Simple Calculator -->
+            <div id="task11" class="task-card bg-white p-6 rounded-xl border border-gray-200 lg:col-span-3">
+                <h2 class="text-xl font-semibold mb-3 text-cyan-600">11. Simple Calculator (using if statements)</h2>
+                <div class="flex flex-col sm:flex-row gap-3 mb-3 items-center">
+                    <input type="number" id="num1" placeholder="First Number" class="w-full sm:w-1/3 p-2 border border-gray-300 rounded-lg focus:ring-cyan-500 focus:border-cyan-500">
+                    <select id="operation" class="w-full sm:w-1/6 p-2 border border-gray-300 rounded-lg focus:ring-cyan-500 focus:border-cyan-500 text-center">
+                        <option value="+">+</option>
+                        <option value="-">-</option>
+                        <option value="*">*</option>
+                        <option value="/">/</option>
+                        <option value="%">%</option>
+                    </select>
+                    <input type="number" id="num2" placeholder="Second Number" class="w-full sm:w-1/3 p-2 border border-gray-300 rounded-lg focus:ring-cyan-500 focus:border-cyan-500">
+                    <button onclick="runCalculator()" class="w-full sm:w-1/6 bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2 px-4 rounded-lg transition duration-150">Calculate</button>
+                </div>
+                <div id="calcResult" class="result-box bg-cyan-100 text-cyan-800 font-medium"></div>
+            </div>
+
+            <!-- Existing TASK 5: Script Analysis (Fixed Content) - Moved to bottom for continuity -->
+            <div id="task5" class="task-card md:col-span-3 bg-white p-6 rounded-xl border border-gray-200">
+                <h2 class="text-xl font-semibold mb-3 text-indigo-600">5. Script Output Analysis (a-f)</h2>
+                <p class="mb-4 text-sm text-gray-600">Analysis of the provided scripts (a-f) and determination of whether the conditional statements would be true or false. (Alert messages are replaced with screen output.)</p>
+                
+                <div id="scriptAnalysisResults" class="space-y-4">
+                    <!-- Results will be generated by JS here -->
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="./chap9to10.js">
+           </script>
+
+</body>
+</html>

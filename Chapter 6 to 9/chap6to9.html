@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Arithmetic Result</title>
+ <style>
+body { font-family: 'Times New Roman', serif; padding: 20px; }
+        /* Style to make the text look like the image (not perfectly aligned with columns, 
+           but using a table is the correct structure) */
+        table { 
+            width: 50%; /* Adjust width as needed */
+            border-collapse: collapse; 
+            text-align: left;
+            font-size: 16px;
+        }
+        th, td {
+            padding: 5px 15px 5px 0; /* Padding for spacing */
+            border: none;
+        }
+        .header-row th {
+            font-weight: bold;
+            font-size: 18px;
+            padding-bottom: 15px; /* Extra space below headers */
+        }
+        .total-row td {
+            font-weight: bold;
+            font-size: 18px;
+            padding-top: 20px; /* Extra space above totals */
+        }
+         h1 { color: #2c3e50; }
+        button { 
+            padding: 10px 15px; 
+            margin: 10px 0; 
+            cursor: pointer; 
+            background-color: #3498db; 
+            color: white; 
+            border: none; 
+            border-radius: 5px; 
+        }
+        table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            text-align: left;
+            font-size: 16px;
+        }
+        /* Style for table cells */
+        th, td {
+            padding: 5px 15px 5px 0;
+            border: none; /* No visible borders */
+        }
+        /* Style for the header row */
+        .header-row th {
+            font-weight: bold;
+            font-size: 18px;
+            padding-bottom: 15px;
+        }
+        /* Style for the total row */
+        .total-row td {
+            font-weight: bold;
+            font-size: 18px;
+            padding-top: 20px;
+        }
+        .output-line {
+            margin: 10px 0;
+        }
+  
+        </style>
+        </head>
+<body>
+
+<div class="output-line" id="output-a">a is ??</div>
+    <div class="output-line" id="output-b">b is ??</div>
+    <div class="output-line" id="output-result">result is ??</div>
+
+    <hr>
+
+
+ <h1>Marksheet Generator</h1>
+    <p>Click the button to start entering the subject data.</p>
+    <button onclick="generateMarksheet()">Generate Dynamic Marksheet</button>
+    
+    <div id="marksheet-container">
+        </div>
+
+
+
+
+
+<script src="./chap6to9.js"></script>
+
+</body>
+</html>

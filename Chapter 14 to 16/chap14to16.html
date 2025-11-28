@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\device-width, initial-scale=1.0">
+    <title>JavaScript Array Practice</title>
+    <!-- Load Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for better readability and structure */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f7f7;
+        }
+        .container-card {
+            background-color: white;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        .result {
+            margin-top: 0.5rem;
+            padding: 0.75rem;
+            background-color: #ecfdf5; /* Light green for results */
+            border-left: 4px solid #10b981; /* Green border */
+            border-radius: 0.5rem;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body class="p-4 sm:p-8">
+
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-800 mb-6 border-b-2 border-green-500 pb-2">
+            JavaScript Array Exercises
+        </h1>
+
+        <!-- Q1-Q6: Declarations -->
+        <div id="q1-q6-container" class="container-card">
+            <h2 class="text-xl font-semibold text-gray-700 mb-4">Q1-Q6: Array Declarations & Initialization</h2>
+            <div class="result" id="declarations-output">
+                <!-- Results will be displayed here -->
+            </div>
+        </div>
+
+        <!-- Q7: Education Qualifications -->
+        <div id="q7-container" class="container-card">
+            <h2 class="text-xl font-semibold text-gray-700 mb-4">Q7: Pakistani Educational Qualifications</h2>
+            <p class="text-sm text-gray-500 mb-2">The list below shows the available education qualifications:</p>
+            <div class="result" id="qualifications-output">
+                <!-- Results will be displayed here -->
+            </div>
+        </div>
+
+        <!-- Q8: Student Scores & Percentages -->
+        <div id="q8-container" class="container-card">
+            <h2 class="text-xl font-semibold text-gray-700 mb-4">Q8: Student Scores & Percentages (Total Marks: 500)</h2>
+            <div class="result" id="scores-output">
+                <!-- Results will be displayed here -->
+            </div>
+        </div>
+
+        <!-- Q9: Color Array Operations -->
+        <div id="q9-container" class="container-card">
+            <h2 class="text-xl font-semibold text-gray-700 mb-4">Q9: Color Array Manipulation</h2>
+            <div class="mb-4">
+                <span class="font-medium text-gray-700">Current Array: </span>
+                <span class="text-green-600 font-bold" id="color-array-display"></span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- a. Add to Beginning -->
+                <div class="p-3 border rounded-lg bg-gray-50">
+                    <label class="block text-sm font-medium text-gray-700">a. Add to Beginning</label>
+                    <input type="text" id="color-start-input" placeholder="e.g., Violet" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2">
+                    <button onclick="addColorStart()" class="mt-2 w-full px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition">Add Color (a)</button>
+                </div>
+
+                <!-- b. Add to End -->
+                <div class="p-3 border rounded-lg bg-gray-50">
+                    <label class="block text-sm font-medium text-gray-700">b. Add to End</label>
+                    <input type="text" id="color-end-input" placeholder="e.g., Orange" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2">
+                    <button onclick="addColorEnd()" class="mt-2 w-full px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition">Add Color (b)</button>
+                </div>
+                
+                <!-- c. Add Two More to Beginning -->
+                <div class="p-3 border rounded-lg bg-gray-50 col-span-1 md:col-span-2">
+                    <button onclick="addTwoMoreStart()" class="w-full px-4 py-2 bg-indigo-500 text-white rounded-md hover:bg-indigo-600 transition">c. Add 'Gold' and 'Silver' to Beginning</button>
+                </div>
+
+                <!-- d. Delete First Color -->
+                <div class="p-3 border rounded-lg bg-gray-50">
+                    <button onclick="deleteFirstColor()" class="w-full px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 transition">d. Delete First Color</button>
+                </div>
+
+                <!-- e. Delete Last Color -->
+                <div class="p-3 border rounded-lg bg-gray-50">
+                    <button onclick="deleteLastColor()" class="w-full px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 transition">e. Delete Last Color</button>
+                </div>
+
+                <!-- f. Add at Index (splice) -->
+                <div class="p-3 border rounded-lg bg-gray-50">
+                    <label class="block text-sm font-medium text-gray-700">f. Add at Specific Index</label>
+                    <div class="flex space-x-2 mt-1">
+                        <input type="text" id="color-splice-add-index" placeholder="Index (e.g., 2)" class="block w-1/3 rounded-md border-gray-300 shadow-sm p-2">
+                        <input type="text" id="color-splice-add-name" placeholder="Color Name" class="block w-2/3 rounded-md border-gray-300 shadow-sm p-2">
+                    </div>
+                    <button onclick="addAtIndex()" class="mt-2 w-full px-4 py-2 bg-yellow-600 text-white rounded-md hover:bg-yellow-700 transition">Add Color (f)</button>
+                </div>
+
+                <!-- g. Delete from Index (splice) -->
+                <div class="p-3 border rounded-lg bg-gray-50">
+                    <label class="block text-sm font-medium text-gray-700">g. Delete from Specific Index</label>
+                    <div class="flex space-x-2 mt-1">
+                        <input type="text" id="color-splice-del-index" placeholder="Index (e.g., 1)" class="block w-1/2 rounded-md border-gray-300 shadow-sm p-2">
+                        <input type="text" id="color-splice-del-count" placeholder="Count (e.g., 2)" class="block w-1/2 rounded-md border-gray-300 shadow-sm p-2">
+                    </div>
+                    <button onclick="deleteAtIndex()" class="mt-2 w-full px-4 py-2 bg-yellow-600 text-white rounded-md hover:bg-yellow-700 transition">Delete Colors (g)</button>
+                </div>
+            </div>
+
+            <div class="result mt-4" id="color-operation-log">
+                <span class="font-medium text-gray-700">Operation Log:</span> Initial array displayed above.
+            </div>
+        </div>
+
+        <!-- Q10: Sorting Scores -->
+        <div id="q10-container" class="container-card">
+            <h2 class="text-xl font-semibold text-gray-700 mb-4">Q10: Sorting Student Scores</h2>
+            <div class="result" id="sort-output">
+                <!-- Results will be displayed here -->
+            </div>
+        </div>
+
+        <!-- Q11: Slicing/Copying Cities -->
+        <div id="q11-container" class="container-card">
+            <h2 class="text-xl font-semibold text-gray-700 mb-4">Q11: Copying City Names (Slice)</h2>
+            <div class="result" id="cities-output">
+                <!-- Results will be displayed here -->
+            </div>
+        </div>
+
+        <!-- Q12: Join Array -->
+        <div id="q12-container" class="container-card">
+            <h2 class="text-xl font-semibold text-gray-700 mb-4">Q12: Creating a Single String (Join)</h2>
+            <div class="result" id="join-output">
+                <!-- Results will be displayed here -->
+            </div>
+        </div>
+
+        <!-- Q13: FIFO (Queue) -->
+        <div id="q13-container" class="container-card">
+            <h2 class="text-xl font-semibold text-gray-700 mb-4">Q13: FIFO (First-In, First-Out) / Queue</h2>
+            <p class="text-sm text-gray-500 mb-2">Values are added to the end (`push`) and accessed/removed from the beginning (`shift`).</p>
+            <div class="result" id="fifo-output">
+                <!-- Results will be displayed here -->
+            </div>
+        </div>
+
+        <!-- Q14: LIFO (Stack) -->
+        <div id="q14-container" class="container-card">
+            <h2 class="text-xl font-semibold text-gray-700 mb-4">Q14: LIFO (Last-In, First-Out) / Stack</h2>
+            <p class="text-sm text-gray-500 mb-2">Values are added to the end (`push`) and accessed/removed from the end (`pop`).</p>
+            <div class="result" id="lifo-output">
+                <!-- Results will be displayed here -->
+            </div>
+        </div>
+
+        <!-- Q15: Dropdown Menu -->
+        <div id="q15-container" class="container-card">
+            <h2 class="text-xl font-semibold text-gray-700 mb-4">Q15: Phone Manufacturers Dropdown</h2>
+            <div id="dropdown-output" class="p-3 bg-white rounded-md shadow-inner border border-gray-200">
+                <!-- Dropdown will be displayed here -->
+            </div>
+            <p class="text-xs text-gray-500 mt-2">Note: This dropdown was dynamically generated using JavaScript's `document.getElementById().innerHTML` as requested by the prompt's nature.</p>
+        </div>
+
+    </div>
+
+    <script src="./chap14to16.js">
+        
+    </script>
+</body>
+</html>
