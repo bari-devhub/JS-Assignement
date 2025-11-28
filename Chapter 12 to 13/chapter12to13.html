@@ -20,9 +20,100 @@
         }
     </style>
     <!-- Setup Inter font via Tailwind -->
-    <script src="./chapter12to13.js">
-        
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
     </script>
+</head>
+<body class="p-4 md:p-8">
+
+    <div class="container mx-auto">
+        <h1 class="text-3xl md:text-4xl font-extrabold text-center text-gray-800 mb-8">
+            JavaScript Conditional Logic Assignments
+        </h1>
+
+        <div id="output-area" class="bg-white p-6 rounded-xl shadow-lg mb-8 transition-all duration-300">
+            <h2 class="text-xl font-bold text-blue-600 mb-4">Results & Output</h2>
+            <div id="display-output" class="min-h-16 text-gray-700 whitespace-pre-wrap">
+                Click an exercise button above to see the output here.
+            </div>
+        </div>
+
+        <div id="exercises" class="space-y-6">
+            <!-- Exercise 1 -->
+            <div class="exercise-card bg-white p-6 rounded-xl shadow-md">
+                <h3 class="text-lg font-semibold mb-3 text-gray-800">1. Character Type Check (Example: 'A')</h3>
+                <p class="text-sm text-gray-600 mb-4">Checks if a character is a number, uppercase letter, or lowercase letter using ASCII codes.</p>
+                <button onclick="runExercise1()" class="w-full py-2 px-4 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition duration-150">
+                    Run Check for 'A'
+                </button>
+            </div>
+
+            <!-- Exercise 2 -->
+            <div class="exercise-card bg-white p-6 rounded-xl shadow-md">
+                <h3 class="text-lg font-semibold mb-3 text-gray-800">2. Compare Two Integers</h3>
+                <p class="text-sm text-gray-600 mb-4">Accepts two integers (via prompt) and displays the larger one, or if they are equal.</p>
+                <button onclick="runExercise2()" class="w-full py-2 px-4 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition duration-150">
+                    Enter and Compare Numbers
+                </button>
+            </div>
+
+            <!-- Exercise 3 -->
+            <div class="exercise-card bg-white p-6 rounded-xl shadow-md">
+                <h3 class="text-lg font-semibold mb-3 text-gray-800">3. Positive, Negative, or Zero Check</h3>
+                <p class="text-sm text-gray-600 mb-4">Takes a number (via prompt) and determines its sign.</p>
+                <button onclick="runExercise3()" class="w-full py-2 px-4 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition duration-150">
+                    Enter Number to Check Sign
+                </button>
+            </div>
+
+            <!-- Exercise 4 -->
+            <div class="exercise-card bg-white p-6 rounded-xl shadow-md">
+                <h3 class="text-lg font-semibold mb-3 text-gray-800">4. Vowel Check</h3>
+                <p class="text-sm text-gray-600 mb-4">Takes a character (via prompt) and returns true if it is a vowel, false otherwise.</p>
+                <button onclick="runExercise4()" class="w-full py-2 px-4 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition duration-150">
+                    Enter Character to Check Vowel
+                </button>
+            </div>
+
+            <!-- Exercise 5 -->
+            <div class="exercise-card bg-white p-6 rounded-xl shadow-md">
+                <h3 class="text-lg font-semibold mb-3 text-gray-800">5. Password Validation</h3>
+                <p class="text-sm text-gray-600 mb-4">Validates user-entered password against a stored password ("Secure123").</p>
+                <button onclick="runExercise5()" class="w-full py-2 px-4 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition duration-150">
+                    Enter Password
+                </button>
+            </div>
+
+            <!-- Exercise 6 -->
+            <div class="exercise-card bg-white p-6 rounded-xl shadow-md">
+                <h3 class="text-lg font-semibold mb-3 text-gray-800">6. Fix Broken if/else Statement</h3>
+                <p class="text-sm text-gray-600 mb-4">Fixes a broken conditional statement and displays the result.</p>
+                <button onclick="runExercise6()" class="w-full py-2 px-4 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition duration-150">
+                    Run Fixed Code
+                </button>
+            </div>
+
+            <!-- Exercise 7 -->
+            <div class="exercise-card bg-white p-6 rounded-xl shadow-md">
+                <h3 class="text-lg font-semibold mb-3 text-gray-800">7. 24-Hour Clock Time Check</h3>
+                <p class="text-sm text-gray-600 mb-4">Takes time in 24-hour format (e.g., 1900) and displays the time of day.</p>
+                <button onclick="runExercise7()" class="w-full py-2 px-4 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition duration-150">
+                    Enter 24-Hour Time
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="./chapter12to13.js">
+       </script>
 
 </body>
 </html>
