@@ -4,7 +4,7 @@
 // ==============================
 const chapter3 = {
   task1() {
-    let age = 20;
+    let age = 18;
     alert("I am " + age + " years old.");
   },
   task2() {
@@ -18,7 +18,7 @@ const chapter3 = {
     output.innerHTML = `<p>My birth year is ${birthYear}.<br>Data type of my declared variable is number.</p>`;
   },
   task4() {
-    let visitorName = "Muhammed Ahmed";
+    let visitorName = "Abdul Bari Khan";
     let productTitle = "T-shirt";
     let quantity = 5;
     output.innerHTML =
